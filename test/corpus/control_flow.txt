@@ -1,0 +1,132 @@
+================================================================================
+If statement
+================================================================================
+
+func void main[]
+    1 == if
+        1 exit
+    end
+end
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_declaration
+    return_type: (primitive_type)
+    name: (identifier)
+    parameters: (parameter_list)
+    body: (number)
+    body: (operator)
+    body: (if_statement
+      body: (number)
+      body: (identifier))))
+
+================================================================================
+If-else statement
+================================================================================
+
+func void main[]
+    1 == if
+        1 exit
+    else
+        2 exit
+    end
+end
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_declaration
+    return_type: (primitive_type)
+    name: (identifier)
+    parameters: (parameter_list)
+    body: (number)
+    body: (operator)
+    body: (if_statement
+      body: (number)
+      body: (identifier)
+      alternative: (number)
+      alternative: (identifier))))
+
+================================================================================
+Nested if statements
+================================================================================
+
+func void main[]
+    1 == if
+        2 == if
+            1 exit
+        end
+    end
+end
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_declaration
+    return_type: (primitive_type)
+    name: (identifier)
+    parameters: (parameter_list)
+    body: (number)
+    body: (operator)
+    body: (if_statement
+      body: (number)
+      body: (operator)
+      body: (if_statement
+        body: (number)
+        body: (identifier)))))
+
+================================================================================
+While loop
+================================================================================
+
+func void main[]
+    var i int
+    while i 10 < do
+        i 1 + !<
+    end
+end
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_declaration
+    return_type: (primitive_type)
+    name: (identifier)
+    parameters: (parameter_list)
+    body: (var_declaration
+      name: (identifier)
+      type: (primitive_type))
+    body: (while_statement
+      condition: (identifier)
+      condition: (number)
+      condition: (operator)
+      body: (identifier)
+      body: (number)
+      body: (operator)
+      body: (operator))))
+
+================================================================================
+For loop over a range
+================================================================================
+
+func void main[]
+    for i in 0..10 do
+        1 exit
+    end
+end
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_declaration
+    return_type: (primitive_type)
+    name: (identifier)
+    parameters: (parameter_list)
+    body: (for_statement
+      iterator: (identifier)
+      iterable: (number)
+      iterable: (operator)
+      iterable: (number)
+      body: (number)
+      body: (identifier))))

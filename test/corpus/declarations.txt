@@ -1,0 +1,288 @@
+================================================================================
+Function declaration
+================================================================================
+
+func void main[]
+    1 exit
+end
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_declaration
+    return_type: (primitive_type)
+    name: (identifier)
+    parameters: (parameter_list)
+    body: (number)
+    body: (identifier)))
+
+================================================================================
+Function with attributes, return type and parameters
+================================================================================
+
+pub no_return func int add[int a, int b]
+    a b +
+end
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_declaration
+    (attribute)
+    (attribute)
+    return_type: (primitive_type)
+    name: (identifier)
+    parameters: (parameter_list
+      (parameter
+        type: (primitive_type)
+        name: (identifier))
+      (parameter
+        type: (primitive_type)
+        name: (identifier)))
+    body: (identifier)
+    body: (identifier)
+    body: (operator)))
+
+================================================================================
+Extern function has no body
+================================================================================
+
+extern pub func void puts[*char[]]
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (extern_function_declaration
+    (attribute)
+    return_type: (primitive_type)
+    name: (identifier)
+    parameters: (parameter_list
+      (ERROR
+        (pointer_type
+          type: (array_type
+            element: (primitive_type)))))))
+
+================================================================================
+Lambda
+================================================================================
+
+func void main[]
+    lambda no_return func void inner[]
+        1 exit
+    end drop
+end
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_declaration
+    return_type: (primitive_type)
+    name: (identifier)
+    parameters: (parameter_list)
+    body: (lambda_declaration
+      (attribute)
+      return_type: (primitive_type)
+      name: (identifier)
+      parameters: (parameter_list)
+      body: (number)
+      body: (identifier))
+    body: (stack_operation)))
+
+================================================================================
+Variable declaration
+================================================================================
+
+var counter int
+var buffer int[1024]
+var head int = 0
+var name = "gofra"
+var chars = 'a';
+var numbers = [1, 2, 3]
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (var_declaration
+    name: (identifier)
+    type: (primitive_type))
+  (var_declaration
+    name: (identifier)
+    type: (array_type
+      element: (primitive_type)
+      size: (number)))
+  (var_declaration
+    name: (identifier)
+    type: (primitive_type)
+    value: (number))
+  (var_declaration
+    name: (identifier)
+    value: (string))
+  (var_declaration
+    name: (identifier)
+    value: (character))
+  (var_declaration
+    name: (identifier)
+    value: (array_literal
+      (number)
+      (number)
+      (number))))
+
+================================================================================
+Constant declaration
+================================================================================
+
+const COLS = 40
+const TITLE = "Gofra Snake"
+const GRID_COLOR Color = { r = 30, g = 30, b = 30, a = -1 }
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (const_declaration
+    name: (identifier)
+    value: (number))
+  (const_declaration
+    name: (identifier)
+    value: (string))
+  (const_declaration
+    name: (identifier)
+    type: (named_type
+      name: (identifier))
+    value: (structure_literal
+      (field_initializer
+        name: (identifier)
+        value: (number))
+      (field_initializer
+        name: (identifier)
+        value: (number))
+      (field_initializer
+        name: (identifier)
+        value: (number))
+      (field_initializer
+        name: (identifier)
+        value: (number)))))
+
+================================================================================
+Type alias
+================================================================================
+
+type Array{T, N} T[N]
+type Pointer{T} *T
+type CStr *char[]
+type IReduce_FT func int _[int accumulator, int item]
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (type_declaration
+    name: (identifier)
+    type_parameters: (type_parameter_list
+      (named_type
+        name: (identifier))
+      (named_type
+        name: (identifier)))
+    type: (array_type
+      element: (named_type
+        name: (identifier))
+      size: (identifier)))
+  (type_declaration
+    name: (identifier)
+    type_parameters: (type_parameter_list
+      (named_type
+        name: (identifier)))
+    type: (pointer_type
+      type: (named_type
+        name: (identifier))))
+  (type_declaration
+    name: (identifier)
+    type: (pointer_type
+      type: (array_type
+        element: (primitive_type))))
+  (type_declaration
+    name: (identifier)
+    type: (function_type
+      return_type: (primitive_type)
+      parameters: (parameter_list
+        (parameter
+          type: (primitive_type)
+          name: (identifier))
+        (parameter
+          type: (primitive_type)
+          name: (identifier))))))
+
+================================================================================
+Structure declaration
+================================================================================
+
+struct Arena
+    base *void[]
+    size int
+    offset int
+end
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (struct_declaration
+    name: (identifier)
+    members: (member_list
+      (member
+        name: (identifier)
+        type: (pointer_type
+          type: (array_type
+            element: (primitive_type))))
+      (member
+        name: (identifier)
+        type: (primitive_type))
+      (member
+        name: (identifier)
+        type: (primitive_type)))))
+
+================================================================================
+Packed structure declaration
+================================================================================
+
+struct packed sockaddr_in
+    sin_family char[2]
+    sin_port char[2]
+end
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (struct_declaration
+    (attribute)
+    name: (identifier)
+    members: (member_list
+      (member
+        name: (identifier)
+        type: (array_type
+          element: (primitive_type)
+          size: (number)))
+      (member
+        name: (identifier)
+        type: (array_type
+          element: (primitive_type)
+          size: (number))))))
+
+================================================================================
+Union declaration
+================================================================================
+
+union Value
+    as_int int
+    as_string string
+end
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (union_declaration
+    name: (identifier)
+    members: (member_list
+      (member
+        name: (identifier)
+        type: (primitive_type))
+      (member
+        name: (identifier)
+        type: (primitive_type)))))

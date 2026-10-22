@@ -1,15 +1,23 @@
 {
   "name": "tree-sitter-gofra",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.1.0",
+  "description": "Gofra grammar for tree-sitter",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "tree-sitter test"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "parser",
+    "tree-sitter",
+    "gofra"
+  ],
+  "author": "Kirill Zhosul",
+  "license": "MIT",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gofralang/tree-sitter-gofra.git"
+  },
   "devDependencies": {
     "tree-sitter-cli": "^0.26.12"
   }

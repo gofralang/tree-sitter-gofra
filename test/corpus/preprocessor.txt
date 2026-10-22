@@ -1,0 +1,61 @@
+================================================================================
+Include and define
+================================================================================
+
+#include "std"
+#define TESTKIT_EXPECTED_EXIT_CODE 3
+#define ARENA_ALIGNMENT sizeof *void
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (preprocessor_directive
+    path: (string))
+  (preprocessor_directive
+    macro_name: (identifier)
+    value: (macro_value))
+  (preprocessor_directive
+    macro_name: (identifier)
+    value: (macro_value)))
+
+================================================================================
+Conditional compilation
+================================================================================
+
+#ifdef OS_DARWIN
+    #define STD_IN STD_IN_FD
+#endif
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (preprocessor_directive
+    macro_name: (identifier))
+  (preprocessor_directive
+    macro_name: (identifier)
+    value: (macro_value))
+  (preprocessor_directive))
+
+================================================================================
+Conditional compilation with code on the same line
+================================================================================
+
+#ifdef OS_DARWIN  pub func int print_fd[int fd] fd call sc_write  end #endif
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (preprocessor_directive
+    macro_name: (identifier))
+  (function_declaration
+    (attribute)
+    return_type: (primitive_type)
+    name: (identifier)
+    parameters: (parameter_list
+      (parameter
+        type: (primitive_type)
+        name: (identifier)))
+    body: (identifier)
+    body: (call_expression
+      function: (identifier)))
+  (preprocessor_directive))

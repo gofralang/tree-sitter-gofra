@@ -11,7 +11,10 @@
         "gofra"
       ],
       "injection-regex": "^gofra$",
-      "class-name": "TreeSitterGofra"
+      "class-name": "TreeSitterGofra",
+      "highlights": [
+        "queries/highlights.scm"
+      ]
     }
   ],
   "metadata": {
@@ -21,11 +24,11 @@
     "authors": [
       {
         "name": "Kirill Zhosul",
-        "url": ""
+        "url": "https://github.com/kirillzhosul"
       }
     ],
     "links": {
-      "repository": "https://github.com/tree-sitter/tree-sitter-gofra",
+      "repository": "https://github.com/gofralang/tree-sitter-gofra",
       "funding": ""
     }
   },

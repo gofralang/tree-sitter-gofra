@@ -1,0 +1,174 @@
+================================================================================
+Stack expression
+================================================================================
+
+func void main[]
+    1 2 +
+    "hello" print
+end
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_declaration
+    return_type: (primitive_type)
+    name: (identifier)
+    parameters: (parameter_list)
+    body: (number)
+    body: (number)
+    body: (operator)
+    body: (string)
+    body: (identifier)))
+
+================================================================================
+Function call
+================================================================================
+
+func void main[]
+    &value 42 call set_value
+end
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_declaration
+    return_type: (primitive_type)
+    name: (identifier)
+    parameters: (parameter_list)
+    body: (operator)
+    body: (identifier)
+    body: (number)
+    body: (call_expression
+      function: (identifier))))
+
+================================================================================
+Memory access operators
+================================================================================
+
+func void main[]
+    &counter 42 !<
+    &counter ?> print
+end
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_declaration
+    return_type: (primitive_type)
+    name: (identifier)
+    parameters: (parameter_list)
+    body: (operator)
+    body: (identifier)
+    body: (number)
+    body: (operator)
+    body: (operator)
+    body: (identifier)
+    body: (operator)
+    body: (identifier)))
+
+================================================================================
+Indexing
+================================================================================
+
+func void main[]
+    matrix[0][1] print
+end
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_declaration
+    return_type: (primitive_type)
+    name: (identifier)
+    parameters: (parameter_list)
+    body: (index_expression
+      object: (index_expression
+        object: (identifier)
+        index: (number))
+      index: (number))
+    body: (identifier)))
+
+================================================================================
+Intrinsics
+================================================================================
+
+func void main[]
+    0 typecast *NetSocket
+    sizeof NetSocket
+    align_of int
+    offset_of Foo c
+    &x pointer_of_proc f !<
+end
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_declaration
+    return_type: (primitive_type)
+    name: (identifier)
+    parameters: (parameter_list)
+    body: (number)
+    body: (typecast_expression
+      type: (pointer_type
+        type: (named_type
+          name: (identifier))))
+    body: (sizeof_expression
+      type: (named_type
+        name: (identifier)))
+    body: (align_of_expression
+      type: (primitive_type))
+    body: (offset_of_expression
+      type: (named_type
+        name: (identifier))
+      field: (identifier))
+    body: (operator)
+    body: (identifier)
+    body: (pointer_of_proc_expression
+      function: (identifier))
+    body: (operator)))
+
+================================================================================
+Stack operations
+================================================================================
+
+func void main[]
+    1 2 swap drop copy
+    breakpoint
+end
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_declaration
+    return_type: (primitive_type)
+    name: (identifier)
+    parameters: (parameter_list)
+    body: (number)
+    body: (number)
+    body: (stack_operation)
+    body: (stack_operation)
+    body: (stack_operation)
+    body: (stack_operation)))
+
+================================================================================
+Syscalls
+================================================================================
+
+func void main[]
+    1 syscall1
+    1 2 3 syscall3
+end
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_declaration
+    return_type: (primitive_type)
+    name: (identifier)
+    parameters: (parameter_list)
+    body: (number)
+    body: (syscall)
+    body: (number)
+    body: (number)
+    body: (number)
+    body: (syscall)))

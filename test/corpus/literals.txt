@@ -1,0 +1,145 @@
+================================================================================
+Numeric literals
+================================================================================
+
+func void main[]
+    0 42 -7 1_000 0x1F 0b1010 0o777 1.5 1.5e10 print
+end
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_declaration
+    return_type: (primitive_type)
+    name: (identifier)
+    parameters: (parameter_list)
+    body: (number)
+    body: (number)
+    body: (number)
+    body: (number)
+    body: (number)
+    body: (number)
+    body: (number)
+    body: (number)
+    body: (number)
+    body: (identifier)
+    body: (identifier)))
+
+================================================================================
+String and character literals
+================================================================================
+
+func void main[]
+    "hello" "with \"escape\"" print
+    'a' '\n' print
+end
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_declaration
+    return_type: (primitive_type)
+    name: (identifier)
+    parameters: (parameter_list)
+    body: (string)
+    body: (string
+      (escape_sequence)
+      (escape_sequence))
+    body: (identifier)
+    body: (character)
+    body: (character
+      (escape_sequence))
+    body: (identifier)))
+
+================================================================================
+Array literal
+================================================================================
+
+func void main[]
+    var numbers = [1, 2, 3]
+    var matrix = [
+      1, 2, 3,
+      4, 5, 6,
+    ]
+end
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_declaration
+    return_type: (primitive_type)
+    name: (identifier)
+    parameters: (parameter_list)
+    body: (var_declaration
+      name: (identifier)
+      value: (array_literal
+        (number)
+        (number)
+        (number)))
+    body: (var_declaration
+      name: (identifier)
+      value: (array_literal
+        (number)
+        (number)
+        (number)
+        (number)
+        (number)
+        (number)))))
+
+================================================================================
+Structure literal
+================================================================================
+
+func void main[]
+    var color = { r = 30, g = 30, b = 30 }
+    var other = Color { r = 30, g = 30 }
+end
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_declaration
+    return_type: (primitive_type)
+    name: (identifier)
+    parameters: (parameter_list)
+    body: (var_declaration
+      name: (identifier)
+      value: (structure_literal
+        (field_initializer
+          name: (identifier)
+          value: (number))
+        (field_initializer
+          name: (identifier)
+          value: (number))
+        (field_initializer
+          name: (identifier)
+          value: (number))))
+    body: (var_declaration
+      name: (identifier)
+      value: (structure_literal
+        name: (identifier)
+        (field_initializer
+          name: (identifier)
+          value: (number))
+        (field_initializer
+          name: (identifier)
+          value: (number))))))
+
+================================================================================
+Booleans
+================================================================================
+
+func void main[]
+    true false print
+end
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_declaration
+    return_type: (primitive_type)
+    name: (identifier)
+    parameters: (parameter_list)
+    body: (boolean)
+    body: (boolean)
+    body: (identifier)))
